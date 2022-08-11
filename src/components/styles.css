@@ -1,0 +1,38 @@
+#board-title{
+    display: flex;
+    justify-content: center;
+}
+
+#board-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cell{
+    font-size: 50px;
+}
+
+.grid {
+    display: grid;
+    margin-top: 50px;
+    grid-template-rows: repeat(3, 150px);
+    grid-template-columns: repeat(3, 150px);
+}
+
+.grid .cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.grid .cell:nth-of-type(n+4):nth-of-type(-n+6){
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+.grid .cell:nth-of-type(3n+2){
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+}
