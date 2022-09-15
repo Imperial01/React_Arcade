@@ -5,7 +5,7 @@
         output: (9) [null, null, null, "x", null, null, null, null, null]
 
 
-2: Need a helper function COMPONENT to check winner 
+2: Need a helper function COMPONENT to check winner  ADD IN BOARD.js
 
     ***** FROM OLD PROJECT ***** MUST BE ABLE TO EXPLAIN
     const winCombo = [
