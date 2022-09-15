@@ -30,7 +30,6 @@
         } 
 
 
-
 3: FILL OUT PLAYER FORM COMPONENT (Form.js)
     - you could use useState for [player,setPlayer]= useState('')
     - Use onSubmit for <form>
