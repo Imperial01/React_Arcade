@@ -5,14 +5,19 @@ import Form from "./Form";
 
 const App = () => {
 
-const [mark, setMark] = useState('cell'); 
+const [mark, setMark] = useState(null); 
+
+const handleClick = event => {
+    event.target.innerHTML = "hello"
+    console.log(event.target.getAttribute('id'))
+}
 
 const board = 
-        ["1", "2", "3",
-        "4", "5", "6",
-        "7", "8", "9"
+        [ 
+            null, null, null,
+            null, null, null,
+            null, null, null
         ]
-
 
     return <>
         <div id="form"> 
@@ -23,7 +28,7 @@ const board =
             <div className="grid">
                 {board.map((cell,idx) => {
                     return (
-                        <div className="cell" key={ idx }>{cell}</div>
+                        <div className= "cell" id = {idx} key = {idx} onClick = {handleClick}> {cell} </div>
                     )
                 })
             }</div>
