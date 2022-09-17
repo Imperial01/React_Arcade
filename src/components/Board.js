@@ -2,20 +2,20 @@ import React from 'react'
 
 // add helper function here or make another component
 
-const Board = () => {
-    const gameState = 
-        [ 
-            null, null, null,
-            null, null, null,
-            null, null, null
-        ]
+const Board = ({gameState, setGameState, playerTurn, player1Piece, player2Piece, setPlayerTurn}) => {
 
+    const handleClick = (event, idx) => {
         
-
-    const handleClick = event => {
-            event.target.innerHTML = "hello" 
-            console.log(event.target.getAttribute('id'))
+        const newGameState = [...gameState]
+        newGameState[idx] = playerTurn
+        setGameState(newGameState)
+        
+        if(playerTurn == player1Piece) {
+            setPlayerTurn(player2Piece)
+        } else {
+            setPlayerTurn(player1Piece)
         }
+    }
 
     return (<>
         <h1 id="board-title">Tic Tac Toe</h1>
@@ -24,12 +24,17 @@ const Board = () => {
             {
                 gameState.map((cell,idx) => {
                     return (
-                        <div className= "cell" id = {idx} key = {idx} onClick = {handleClick}> {cell} </div>
+                        <div className= "cell" key = {idx} onClick = {(event) => {handleClick(event, idx)}}> {cell} </div>
                     )})
             }
             </div>
         </div>
     </>)
 }
+
+
+
+
+
 
 export default Board;

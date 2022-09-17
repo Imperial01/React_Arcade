@@ -20,7 +20,6 @@ const Form = ({setPlayer1, setPlayer2}) => {
         setPlayer2(formPlayer2)
         setFormPlayer1('')
         setFormPlayer2('')
-        console.log(formPlayer1, formPlayer2)
     }
 
 
