@@ -5,12 +5,15 @@ import Board from "./Board";
 
 
 const App = () => {
-
+    const [player1, setPlayer1] = useState('')
+    const [player2, setPlayer2] = useState('')
+    
 
     return <>
         <div id="form"> 
-            <Form />
+            <Form setPlayer1 = {setPlayer1} setPlayer2 = {setPlayer2} /> 
         </div>
+
         <div>
             <Board />
         </div>

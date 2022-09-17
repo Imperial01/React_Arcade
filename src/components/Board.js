@@ -10,6 +10,8 @@ const Board = () => {
             null, null, null
         ]
 
+        
+
     const handleClick = event => {
             event.target.innerHTML = "hello" 
             console.log(event.target.getAttribute('id'))
