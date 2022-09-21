@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
 // add helper function here or make another component
 
-const Board = ({gameState, setGameState, playerTurn, player1Piece, player2Piece, setPlayerTurn}) => {
+const Board = ({gameState, setGameState, playerTurn, player1Piece, player2Piece, setPlayerTurn,player1,player2}) => {
 
     const [winCombo] = useState([
     [0, 1, 2],
@@ -13,6 +13,13 @@ const Board = ({gameState, setGameState, playerTurn, player1Piece, player2Piece,
     [2, 5, 8],
     [0, 4, 8],
     [2, 4, 6], ])
+    
+    useEffect(() => {
+        if(checkIfWon()){
+            alert(`${playerTurn == player1Piece ? player2 : player1} is the WINNER`)
+        }
+        
+    },[gameState])
 
     const handleClick = (event, idx) => {
         
@@ -32,30 +39,35 @@ const Board = ({gameState, setGameState, playerTurn, player1Piece, player2Piece,
 
 
 const checkIfWon = () => {
-    winCombo.forEach((pattern) => {
-        let won = true
-        let firstValue = null
-        for(let i=0; i < pattern.length; i++) {
-            let idx = pattern[i]
-            let gameValue = gameState[idx]
-            if(i === 0) {
-                //if this is the first time through loop
-                firstValue = gameValue
-                //we want to store the game value to compare
-            }
-            if (gameValue !== firstValue) {
-                return false
-            }
-            if (won) {
-                alert('{player} WON!!!!!!!!!')
-            }
-            //FINISH THE LOOPS, JEFF SAID IT IS NOT DONE
-            //PROGRESS***
-            
+    for(let j=0; j < winCombo.length; j++){
+        let pattern = winCombo[j] 
+        let a = gameState[pattern[0]];
+        let b = gameState[pattern[1]];
+        let c = gameState[pattern[2]];
+
+        if (a === null || b === null || c === null) {
+            continue;
         }
-    })
+
+        if (a === b && b === c) {
+            return true;           
+        }
+    } 
+    return false
 }
 
+const checkIfTie = () => {
+    let filled = true;
+    gameState.forEach((cell) => {
+        if (cell == null) {
+            filled = false;
+        }
+    });
+
+    if (filled) {
+        alert('tie');
+    }
+};
 
     return (<>
         <h1 id="board-title">Tic Tac Toe</h1>
@@ -78,3 +90,10 @@ const checkIfWon = () => {
 
 
 export default Board;
+
+
+
+// dont let people click if the cell is already filled
+// dont let people click if they havent pressed play
+// dont let people click if the game is over 
+// check if tie 
