@@ -10,6 +10,8 @@ const App = () => {
     const [player1Piece, setPlayer1Piece] = useState('X')
     const [player2Piece, setPlayer2Piece] = useState('O')
     const [playerTurn, setPlayerTurn] = useState('X')
+    const [isPlaying, setIsPlaying] = useState(false)
+    const [winner, setWinner] = useState('')
     const [gameState, setGameState] = useState(
         [
             null, null, null,
@@ -36,10 +38,12 @@ const App = () => {
                 <div id="form">
                     <Form
                         setPlayer1={setPlayer1}
-                        setPlayer2={setPlayer2} />
+                        setPlayer2={setPlayer2} 
+                        isPlaying = {isPlaying}
+                        setIsPlaying = {setIsPlaying}/>
                 </div> :
-                <div>
-                    {
+                <div> 
+                    { 
                         (playerTurn == player1Piece) ?
                             <div>
                                 <h1>{player1}:{player1Piece}</h1>
@@ -47,7 +51,7 @@ const App = () => {
                             <div>
                                 <h1>{player2}:{player2Piece}</h1>
                             </div>
-                    }
+                    } 
                     <button className="players-button" onClick={restartGame}>RESET!</button>
                 </div>
 
@@ -63,6 +67,8 @@ const App = () => {
                 setPlayerTurn={setPlayerTurn}
                 player1 = {player1}
                 player2 = {player2}
+                setIsPlaying = {setIsPlaying}
+                isPlaying = {isPlaying}
             />
         </div>
 
