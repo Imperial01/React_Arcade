@@ -1,7 +1,7 @@
 import React, {useState} from "react"
 
 
-const Form = ({setPlayer1, setPlayer2}) => {
+const Form = ({setPlayer1, setPlayer2, setIsPlaying}) => {
 
     const [formPlayer1, setFormPlayer1] = useState('')
     const [formPlayer2, setFormPlayer2] = useState('')
@@ -20,6 +20,7 @@ const Form = ({setPlayer1, setPlayer2}) => {
         setPlayer2(formPlayer2)
         setFormPlayer1('')
         setFormPlayer2('')
+        setIsPlaying(true)
     }
 
 
